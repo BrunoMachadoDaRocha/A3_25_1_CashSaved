@@ -5,38 +5,67 @@
 
       <div class="saldo-container">
         <h3 class="saldo-label">Saldo Total:</h3>
-        <p class="saldo-valor">R$ 10.000,00</p>
-        <button class="btn-saldo">Ver Saldo</button>
+        <p class="saldo-valor" v-if="showSaldoTotal">R$ 10.000,00</p>
+        <p class="saldo-valor" v-else>R$ *********</p>
+        <button class="btn-saldo" @click="toggleSaldo">
+          {{ showSaldoTotal ? 'Ocultar Saldo' : 'Ver Saldo' }}
+        </button>
       </div>
     </div>
 
-    <div class="bottom-section">
-      <!-- Conteúdo futuro (ex: gráficos, cards, etc.) -->
+    <div class="dashboard-cards">
+      <CardDashboard />
+      <CardDashboard />
+      <CardDashboard />
     </div>
   </div>
 </template>
 
 <script>
+import CardDashboard from './CardDashboard.vue'
+
 export default {
-  name: 'TheDashboard'
+  name: 'TheDashboard',
+  components: {
+    CardDashboard,
+  },
+  data() {
+    return {
+      showSaldoTotal: true
+    }
+  },
+  methods: {
+    toggleSaldo() {
+      this.showSaldoTotal = !this.showSaldoTotal
+    }
+  }
 }
 </script>
+
 
 <style>
 .dashboard {
   background-color: #2c3034;
   border-radius: 10px;
-  margin: 30px;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 20px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px; /* Reduzido para menor espaçamento */
 }
 
+.dashboard-cards {
+  display: flex;
+  justify-content: space-around;
+}
+
 .section-title {
-  color: #fff;
-  font-size: 24px;
-  margin-bottom: 10px;
+  color: #00b894;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .saldo-container {
@@ -72,9 +101,5 @@ export default {
 
 .btn-saldo:hover {
   background-color: #019870;
-}
-
-.bottom-section {
-  /* Espaço reservado para futuro conteúdo */
 }
 </style>
