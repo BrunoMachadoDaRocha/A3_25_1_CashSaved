@@ -2,14 +2,14 @@
   <div class="container">
     <div class="infos-conta">
       <p id="conta">Conta Banco 1</p>
-      <p id="valor" v-if="showValue">R$ 5.000,00</p>
+      <p id="valor" v-if="showValue">R$ {{ valor }}</p>
       <p id="valor" v-else>R$ *********</p>
     </div>
     <div class="botoes">
       <button id="button1" @click="toggleValue">
         {{ showValue ? 'Ocultar valor' : 'Mostrar valor' }}
       </button>
-      <button id="button2">Adicionar</button>
+      <button id="button2" @click="adicionarValor">Adicionar</button>
     </div>
   </div>
 </template>
@@ -18,16 +18,25 @@
 <script>
 export default {
   name: 'CardDashboard',
+
   data() {
     return {
       showValue: true,
+      valor: 20,
     }
   },
+
   methods: {
     toggleValue() {
       this.showValue = !this.showValue;
-    }
+    },
+    adicionarValor() {
+      let add = prompt('Qual é o valor a ser adicionado')
+      this.valor += add
+      document.getElementById('valor').innerText = this.valor
+    },
   }
+
 }
 </script>
 

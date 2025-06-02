@@ -53,7 +53,7 @@ export default {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Reduzido para menor espaçamento */
+  gap: 20px;
 }
 
 .dashboard-cards {
@@ -102,4 +102,14 @@ export default {
 .btn-saldo:hover {
   background-color: #019870;
 }
+
+@media (max-width: 600px) {
+
+  .dashboard-cards {
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
 </style>

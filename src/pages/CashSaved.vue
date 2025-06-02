@@ -3,7 +3,11 @@
     <TheHeader />
     <h4>Resumo Financeiro</h4>
     <TheDashboard />
-    <TheGrafico />
+    <div class="div-graficos">
+      <TheGrafico />
+      <TheGrafico />
+      <TheGrafico />
+    </div>
     <TheFooter />
   </div>
 </template>
@@ -39,4 +43,20 @@ h4 {
     text-align: center;
     margin-top: 20px;
 }
+
+.div-graficos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+
+.div-graficos {
+  display: flex;
+  flex-direction: column;
+}
+
+}
+
 </style>

@@ -1,11 +1,21 @@
 <template>
-  <div class="pie-chart"></div>
+  <div class="container-grafico">
+    <div class="pie-chart"></div>
 
-  <div class="legend">
-    <div class="legend-item"><div class="color-box alimentacao"></div> Alimentação (30%)</div>
-    <div class="legend-item"><div class="color-box transporte"></div> Transporte (25%)</div>
-    <div class="legend-item"><div class="color-box lazer"></div> Lazer (20%)</div>
-    <div class="legend-item"><div class="color-box moradia"></div> Moradia (25%)</div>
+    <div class="legend">
+      <div class="legend-item">
+        <div class="color-box alimentacao"></div> Alimentação (30%)
+      </div>
+      <div class="legend-item">
+        <div class="color-box transporte"></div> Transporte (25%)
+      </div>
+      <div class="legend-item">
+        <div class="color-box lazer"></div> Lazer (20%)
+      </div>
+      <div class="legend-item">
+        <div class="color-box moradia"></div> Moradia (25%)
+      </div>
+    </div>
   </div>
 </template>
 
@@ -15,42 +25,51 @@ export default {
 }
 </script>
 
-
 <style scoped>
+.container-grafico {
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+  background-color: #ccc;
+  margin: 30px;
+  border-radius: 15px;
+  padding: 20px;
+}
+
 .pie-chart {
-  width: 400px;
-  height: 400px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   background: conic-gradient(
-    #4caf50 0% 30%,    /* Alimentação */
-    #2196f3 30% 55%,   /* Transporte */
-    #ff9800 55% 75%,   /* Lazer */
-    #f44336 75% 100%   /* Moradia */
+    #4caf50 0% 30%,   
+    #2196f3 30% 55%,   
+    #ff9800 55% 75%,   
+    #f44336 75% 100%
   );
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  margin: 0 auto 30px auto;
+  flex-shrink: 0; 
 }
 
 .legend {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 400px;
-  margin: 0 auto;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 200px;
+  flex-grow: 1;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
+  word-wrap: break-word;
 }
 
 .color-box {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 5px;
 }
 
@@ -58,4 +77,16 @@ export default {
 .transporte  { background-color: #2196f3; }
 .lazer       { background-color: #ff9800; }
 .moradia     { background-color: #f44336; }
+
+@media (max-width: 500px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .legend {
+    max-width: 100%;
+    align-items: center;
+  }
+}
 </style>
