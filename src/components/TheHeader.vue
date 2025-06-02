@@ -7,20 +7,23 @@
 
     <nav class="navigation">
       <ul class="nav-list">
-        <li><a href="#"><i class="bi bi-house-door"></i>Dashboard</a></li>
-        <li><a href="#"><i class="bi bi-wallet2"></i>Contas</a></li>
-        <li><a href="#"><i class="bi bi-tags"></i>Categorias</a></li>
-        <li><a href="#"><i class="bi bi-flag"></i>Metas</a></li>
-        <li><a href="#"><i class="bi bi-graph-up"></i>Projeções</a></li>
-        <li><a href="#"><i class="bi bi-receipt"></i>Visão anual</a></li>
+        <li><RouterLink to="/"><i class="bi bi-house-door"></i>Dashboard</RouterLink></li>
+        <li><RouterLink to="/"><i class="bi bi-wallet2"></i>Contas</RouterLink></li>
+        <li><RouterLink to="/Categorias"><i class="bi bi-tags"></i>Categorias</RouterLink></li>
+        <li><RouterLink to="/"><i class="bi bi-flag"></i>Metas</RouterLink></li>
+        <li><RouterLink to="/"><i class="bi bi-graph-up"></i>Projeções</RouterLink></li>
+        <li><RouterLink to="/"><i class="bi bi-receipt"></i>Visão anual</RouterLink></li>
       </ul>
     </nav>
   </header>
 </template>
 
 <script>
+import { RouterLink } from 'app/node_modules/vue-router/dist/vue-router';
+
 export default {
-  name: 'TheHeader',
+    name: 'TheHeader',
+    components: { RouterLink }
 }
 </script>
 
