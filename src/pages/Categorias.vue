@@ -2,12 +2,15 @@
     <div>
         <the-header />
         <h2>Gerenciamento de Categorias</h2>
+        <TheForms />
         <TheFooter class="pe"/>
     </div>
 </template>
 <script>
 import TheFooter from '../components/TheFooter.vue'
 import TheHeader from '../components/TheHeader.vue'
+import TheForms from '../components/TheForms.vue'
+
 export default {
   name: 'CashSaved',
   data() {
@@ -17,7 +20,8 @@ export default {
   }, 
   components: {
     TheHeader,
-    TheFooter
+    TheFooter,
+    TheForms
   }
 }
 </script>
@@ -29,7 +33,6 @@ h2 {
     text-align: center;
 }
 .pe {
-  position: fixed;
   bottom: 0;
   width: 100%;
 }
