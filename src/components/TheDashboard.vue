@@ -5,7 +5,9 @@
 
       <div class="saldo-container">
         <h3 class="saldo-label">Saldo Total:</h3>
-        <p class="saldo-valor" v-if="showSaldoTotal">R$ 10.000,00</p>
+        <p class="saldo-valor" v-if="showSaldoTotal">
+          {{ saldoTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}
+        </p>
         <p class="saldo-valor" v-else>R$ *********</p>
         <button class="btn-saldo" @click="toggleSaldo">
           {{ showSaldoTotal ? 'Ocultar Saldo' : 'Ver Saldo' }}
@@ -14,9 +16,13 @@
     </div>
 
     <div class="dashboard-cards">
-      <CardDashboard :conta="1" :valor="500"/>
-      <CardDashboard :conta="2" :valor="200"/>
-      <CardDashboard :conta="3" :valor="300"/>
+      <CardDashboard
+        v-for="(conta, index) in contas"
+        :key="conta.id"
+        :conta="conta.id"
+        :valor="conta.valor"
+        @update-valor="updateValor(index, $event)"
+      />
     </div>
   </div>
 </template>
@@ -31,17 +37,31 @@ export default {
   },
   data() {
     return {
-      showSaldoTotal: false
+      showSaldoTotal: false,
+      contas: [
+        { id: 1, valor: 500 },
+        { id: 2, valor: 200 },
+        { id: 3, valor: 300 }
+      ]
+    }
+  },
+  computed: {
+    saldoTotal() {
+      return this.contas.reduce((acc, conta) => acc + conta.valor, 0)
     }
   },
   methods: {
     toggleSaldo() {
       this.showSaldoTotal = !this.showSaldoTotal
+    },
+    updateValor(index, novoValor) {
+      if (!isNaN(novoValor) && novoValor >= 0) {
+        this.contas[index].valor = novoValor
+      }
     }
   }
 }
 </script>
-
 
 <style>
 .dashboard {
@@ -104,12 +124,9 @@ export default {
 }
 
 @media (max-width: 600px) {
-
   .dashboard-cards {
-    display: flex;
     flex-direction: column;
+    gap: 10px;
   }
-
 }
-
 </style>
