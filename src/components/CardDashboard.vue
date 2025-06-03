@@ -36,13 +36,23 @@ export default {
     }
   },
 
+  watch: {
+    valor(newVal) {
+      this.valorInterno = newVal;
+    }
+  },
+
   methods: {
     toggleValue() {
       this.showValue = !this.showValue;
     },
     adicionarValor() {
       let add = prompt('Qual é o valor a ser adicionado');
-      this.valorInterno += parseInt(add);
+      const valorAdd = parseInt(add);
+      if (!isNaN(valorAdd)) {
+        this.valorInterno += valorAdd;
+        this.$emit('update-valor', this.valorInterno);
+      }
     },
   }
 }

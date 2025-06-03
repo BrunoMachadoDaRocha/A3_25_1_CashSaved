@@ -17,10 +17,11 @@
 
     <div class="dashboard-cards">
       <CardDashboard
-        v-for="conta in contas"
+        v-for="(conta, index) in contas"
         :key="conta.id"
         :conta="conta.id"
         :valor="conta.valor"
+        @update-valor="updateValor(index, $event)"
       />
     </div>
   </div>
@@ -46,17 +47,21 @@ export default {
   },
   computed: {
     saldoTotal() {
-      return this.contas.reduce((acc, conta) => acc + conta.valor, 0);
+      return this.contas.reduce((acc, conta) => acc + conta.valor, 0)
     }
   },
   methods: {
     toggleSaldo() {
-      this.showSaldoTotal = !this.showSaldoTotal;
+      this.showSaldoTotal = !this.showSaldoTotal
+    },
+    updateValor(index, novoValor) {
+      if (!isNaN(novoValor) && novoValor >= 0) {
+        this.contas[index].valor = novoValor
+      }
     }
   }
 }
 </script>
-
 
 <style>
 .dashboard {
@@ -119,12 +124,9 @@ export default {
 }
 
 @media (max-width: 600px) {
-
   .dashboard-cards {
-    display: flex;
     flex-direction: column;
+    gap: 10px;
   }
-
 }
-
 </style>
