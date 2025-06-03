@@ -32,7 +32,7 @@ export default {
     },
     adicionarValor() {
       let add = prompt('Qual é o valor a ser adicionado')
-      this.valor += add
+      this.valor += parseInt(add)
       document.getElementById('valor').innerText = this.valor
     },
   }
