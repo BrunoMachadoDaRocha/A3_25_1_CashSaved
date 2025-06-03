@@ -14,9 +14,9 @@
     </div>
 
     <div class="dashboard-cards">
-      <CardDashboard />
-      <CardDashboard />
-      <CardDashboard />
+      <CardDashboard :conta="1" :valor="500"/>
+      <CardDashboard :conta="2" :valor="200"/>
+      <CardDashboard :conta="3" :valor="300"/>
     </div>
   </div>
 </template>
@@ -31,7 +31,7 @@ export default {
   },
   data() {
     return {
-      showSaldoTotal: true
+      showSaldoTotal: false
     }
   },
   methods: {

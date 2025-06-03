@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div class="infos-conta">
-      <p id="conta">Conta Banco 1</p>
-      <p id="valor" v-if="showValue">R$ {{ valor }}</p>
+      <p id="conta">Conta Banco {{ conta }}</p>
+      <p id="valor" v-if="showValue">R$ {{ valorInterno }}</p>
       <p id="valor" v-else>R$ *********</p>
     </div>
     <div class="botoes">
@@ -14,15 +14,25 @@
   </div>
 </template>
 
-
 <script>
 export default {
   name: 'CardDashboard',
 
+  props: {
+    conta: {
+      type: String,
+      required: true
+    },
+    valor: {
+      type: Number,
+      required: true
+    },
+  },
+
   data() {
     return {
-      showValue: true,
-      valor: 20,
+      showValue: false,
+      valorInterno: this.valor
     }
   },
 
@@ -31,15 +41,12 @@ export default {
       this.showValue = !this.showValue;
     },
     adicionarValor() {
-      let add = prompt('Qual é o valor a ser adicionado')
-      this.valor += parseInt(add)
-      document.getElementById('valor').innerText = this.valor
+      let add = prompt('Qual é o valor a ser adicionado');
+      this.valorInterno += parseInt(add);
     },
   }
-
 }
 </script>
-
 
 <style>
 .container {
@@ -54,7 +61,7 @@ export default {
   padding: 5px;
 }
 
-.infos-contas {
+.infos-conta {
   display: flex;
   flex-direction: column;
 }
@@ -90,5 +97,4 @@ export default {
   font-size: 15px;
   margin: 10px;
 }
-
 </style>
