@@ -14,6 +14,7 @@
             id="valor"
             v-model="categoria.valor"
             placeholder="Digite Valor"
+            class:
           />
         </div>
   
@@ -46,10 +47,31 @@
           </select>
         </div>
   
-        <q-btn label="Salvar" icon="save" color="primary" @click="salvarCategoria" />
+        <q-btn push color="primary" label="Salvar" @click="salvarCategoria" />
 
       </form>
     </div>
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th>Categoria</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th>Tipo</th>
+          <th>Total</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(cat, index) in categorias" :key="index">
+          <td>{{ cat.nome }}</td>
+          <td>{{ cat.valor }}</td>
+          <td>{{ cat.tipo }}</td>
+          <td><span :style="{ color: cat.cor }">{{ cat.cor }}</span></td>
+          <td><i :class="cat.icone"></i></td>
+        </tr>
+      </tbody>
+    </table>
   </template>
   
   <script>
@@ -70,11 +92,7 @@
 
     methods: {
         salvarCategoria() {
-            console.log(this.categoria)
-            // console.log(valorInput)
-            // console.log(tipoInput)
-            // console.log(corInput)
-            // console.log(inconeInput)
+            console.log(this.categoria);
         },
     },
   };
@@ -143,5 +161,8 @@
   .btn:hover {
     background-color: #218838;
   }
+  #valor {
+  color: black;
+}
   </style>
   
