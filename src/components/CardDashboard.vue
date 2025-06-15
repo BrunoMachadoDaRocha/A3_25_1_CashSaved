@@ -5,11 +5,24 @@
       <p id="valor" v-if="showValue">R$ {{ valorInterno }}</p>
       <p id="valor" v-else>R$ *********</p>
     </div>
+
     <div class="botoes">
       <button id="button1" @click="toggleValue">
         {{ showValue ? 'Ocultar valor' : 'Mostrar valor' }}
       </button>
-      <button id="button2" @click="adicionarValor">Adicionar</button>
+      <button id="button2" @click="mostrarInput = !mostrarInput">
+        {{ mostrarInput ? 'Cancelar' : 'Adicionar' }}
+      </button>
+    </div>
+
+    <div v-if="mostrarInput" class="input-container">
+      <input
+        type="number"
+        v-model.number="novoValor"
+        placeholder="Digite o valor a adicionar"
+        class="input-valor"
+      />
+      <button id="button3" @click="confirmarAdicao">Confirmar</button>
     </div>
   </div>
 </template>
@@ -32,7 +45,9 @@ export default {
   data() {
     return {
       showValue: false,
-      valorInterno: this.valor
+      valorInterno: this.valor,
+      mostrarInput: false,
+      novoValor: null
     }
   },
 
@@ -46,14 +61,16 @@ export default {
     toggleValue() {
       this.showValue = !this.showValue;
     },
-    adicionarValor() {
-      let add = prompt('Qual é o valor a ser adicionado');
-      const valorAdd = parseInt(add);
-      if (!isNaN(valorAdd)) {
-        this.valorInterno += valorAdd;
+    confirmarAdicao() {
+      if (!isNaN(this.novoValor) && this.novoValor !== null) {
+        this.valorInterno += this.novoValor;
         this.$emit('update-valor', this.valorInterno);
+        this.novoValor = null;
+        this.mostrarInput = false;
+      } else {
+        alert('Digite um valor válido.');
       }
-    },
+    }
   }
 }
 </script>
@@ -88,9 +105,10 @@ export default {
   text-align: center;
 }
 
-#button1 {
+#button1,
+#button2,
+#button3 {
   color: #fff;
-  background-color: #0d6efd;
   border: none;
   padding: 10px;
   border-radius: 5px;
@@ -98,13 +116,36 @@ export default {
   margin: 10px;
 }
 
+#button1 {
+  background-color: #0d6efd;
+}
+
 #button2 {
-  color: #fff;
   background-color: #008469;
-  border: none;
-  padding: 10px;
+}
+
+#button3 {
+  background-color: #6c757d;
+  transition: 0.5s;
+}
+
+#button3:hover {
+  color: #6c757d;
+  background-color: #FFF;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.input-valor {
+  padding: 8px;
+  font-size: 14px;
   border-radius: 5px;
-  font-size: 15px;
-  margin: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 8px;
 }
 </style>
