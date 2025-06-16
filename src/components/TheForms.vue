@@ -97,15 +97,21 @@ export default {
   },
   methods: {
     salvarCategoria() {
-      this.categorias.push({ ...this.categoria });
 
-      this.categoria = {
-        nome: "",
-        valor: "",
-        tipo: "entrada",
-        cor: "#000000",
-        icone: "bi-cart",
-      };
+      if (this.categoria.valor == '') {
+        alert('Digite um valor')
+      } else {
+        this.categorias.push({ ...this.categoria });
+
+        this.categoria = {
+          nome: "",
+          valor: "",
+          tipo: "entrada",
+          cor: "#000000",
+          icone: "bi-cart",
+        };
+      }
+      
     },
   },
 };

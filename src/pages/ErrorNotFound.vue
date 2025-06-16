@@ -23,7 +23,7 @@ span {
 }
 
 .titulo_erro {
-  font-size: 60px;
+  font-size: 30px;
   color: #fff;
   font-weight: bold;
   text-align: center;
@@ -31,7 +31,7 @@ span {
 }
 
 img {
-  width: 300px;
+  width: 150px;
   margin: auto;
 }
 

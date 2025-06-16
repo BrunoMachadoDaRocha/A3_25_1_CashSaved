@@ -8,6 +8,10 @@ const routes = [
     path: '/Categorias',
     component: () => import('pages/Categorias.vue')
   },
+  {
+    path: '/EmConstrucao',
+    component: () => import('pages/LoandingPage.vue')
+  },
 
   {
     path: '/teste',

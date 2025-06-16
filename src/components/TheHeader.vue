@@ -1,18 +1,18 @@
 <template>
   <header class="header">
     <div class="logo-container">
-      <img src="../assets/Logo.png" alt="Logo de nossa aplicação" class="logo">
-      <h2 class="title">Cash $aved</h2>
+      <RouterLink to="/"><img src="../assets/Logo.png" alt="Logo de nossa aplicação" class="logo"></RouterLink>
+      <RouterLink to="/" style="text-decoration: none;"><h2 class="title">Cash $aved</h2></RouterLink>
     </div>
 
     <nav class="navigation">
       <ul class="nav-list">
         <li><RouterLink to="/"><i class="bi bi-house-door"></i>Dashboard</RouterLink></li>
-        <li><RouterLink to="/"><i class="bi bi-wallet2"></i>Contas</RouterLink></li>
+        <li><RouterLink to="/emConstrucao"><i class="bi bi-wallet2"></i>Contas</RouterLink></li>
         <li><RouterLink to="/Categorias"><i class="bi bi-tags"></i>Categorias</RouterLink></li>
-        <li><RouterLink to="/"><i class="bi bi-flag"></i>Metas</RouterLink></li>
-        <li><RouterLink to="/"><i class="bi bi-graph-up"></i>Projeções</RouterLink></li>
-        <li><RouterLink to="/"><i class="bi bi-receipt"></i>Visão anual</RouterLink></li>
+        <li><RouterLink to="/emConstrucao"><i class="bi bi-flag"></i>Metas</RouterLink></li>
+        <li><RouterLink to="/emConstrucao"><i class="bi bi-graph-up"></i>Projeções</RouterLink></li>
+        <li><RouterLink to="/emConstrucao"><i class="bi bi-receipt"></i>Visão anual</RouterLink></li>
       </ul>
     </nav>
   </header>
