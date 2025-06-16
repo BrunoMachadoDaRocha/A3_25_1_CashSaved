@@ -1,6 +1,7 @@
 # Quasar App (cash-saved)
 
 A3 da UC de 'Usuabilidade, WEB, mobile e jogos', na qual o professor Jean Paul e Vítor estão ministrando
+Alunos: Bruno Machado Da Rocha Gustavo Danner da Rosa Miguel Marques Duarte Victor Pithan Altnetter
 
 ## Install the dependencies
 ```bash
